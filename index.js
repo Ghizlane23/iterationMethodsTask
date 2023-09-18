@@ -67,3 +67,72 @@ const divMlt = (arr) => {
   return newR;
 };
 console.log(divMlt(numbers));
+/*****************************************************************
+Part 4: Extra not required 🌶️🌶️🌶️
+******************************************************************/
+/*************************************
+ * logger(array)
+ *
+ * - Accepts an array
+ * - Logs every element of the array
+ ************************************/
+const logger = (array) => {
+  array.forEach((e) => {
+    console.log(e);
+  });
+};
+logger(numbers);
+/*************************************
+ * toCelsius(temperatures)
+ *
+ * - Accepts an array of temperatures
+ *   in degrees Fahrenheit
+ * - Returns an array of temperatures
+ *   in degrees Celsius
+ *
+ * The conversion is:
+ *   C = (F - 32) * (5/9)
+ ************************************/
+const toCelsius = (temperatures) => {
+  const cels = temperatures.map((x) => (x - 32) * (5 / 9));
+  return cels;
+};
+console.log(toCelsius(numbers));
+
+/**************************************
+ * hottestDays(temperatures, threshhold)
+ *
+ * - Accepts an array of temperatures
+ * - Accepts a threshhold temperature
+ * - Returns an array of temperatures
+ *   that exceed the threshhold
+ ***************************************/
+const hottestDays = function (temperatures, threshhold) {
+  const exTemp = temperatures.filter((x) => x > threshhold);
+  return exTemp;
+};
+console.log(hottestDays(numbers, 5));
+
+/******************************************
+ * logHottestDays(temperatures, threshhold)
+ *
+ * - Accepts an array of temperatures
+ *   IN DEGREES FAHRENHEINT
+ * - Accepts a threshhold temperature
+ *   IN DEGREES FAHRENHEINT
+ * - Logs temperatures that exceed the
+ *   threshhold to the console
+ *   IN DEGREES CELSIUS
+ *
+ * hint: you can combine
+ *       all previous functions
+ *******************************************/
+const logHottestDays = (temperatures, threshhold) => {
+  const ExcedTem = hottestDays(temperatures, threshhold);
+
+  const degCel = toCelsius(ExcedTem);
+  console.log("Temperatures that exceed threshhold in  celsius");
+  logger(degCel);
+};
+
+logHottestDays(numbers, 25);
